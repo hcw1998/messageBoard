@@ -34,7 +34,6 @@ func (this *User) CreateUser() (account string, err error) {
 	userModel.Account = this.Account
 	userModel.Password, _ = PasswordHash(this.Password)
 	account, err = userModel.CreateUser()
-	// fmt.Printf("after create%v, %s	\n", userModel, err)
 	return account, err
 }
 
@@ -42,7 +41,6 @@ func (this *User) SelectUser() (*model.User, error) {
 	var userModel model.User
 	userModel.Account = this.Account
 	userModel.Password = this.Password
-	// account, password, isSuspension, err = userModel.Select()
 	user, err := userModel.SelectUser()
 	// fmt.Printf("after create%v, %s	\n", userModel, err)
 	return user, err

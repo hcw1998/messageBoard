@@ -1,8 +1,6 @@
 package controller
 
 import (
-	"fmt"
-
 	helper "messageBoard/gin/Helper"
 	service "messageBoard/gin/Services"
 	"net/http"
@@ -44,11 +42,10 @@ func UserLogin(c *gin.Context) {
 	user, err := userService.SelectUser()
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{
-			"message": "select() error!",
+			"message": "SelectUser failed",
 		})
 		return
 	}
-	fmt.Printf("pwd: %s	\n", userService.Password)                       //456
 	match := service.PasswordVerify(user.Password, userService.Password) // (hash,no hash)
 	token, _ := helper.GenerateToken(user)
 	if !match {
@@ -70,15 +67,14 @@ func UserIsSuspensionUpdate(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	fmt.Printf("%v", userService)
 	err = userService.UpdateUserIsSuspension()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"message": "Update user is_suspension failed",
+			"message": "Update user's is_suspension failed",
 		})
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"message": "Update user is_suspension successfully",
+		"message": "Update user's is_suspension successfully",
 	})
 }

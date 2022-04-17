@@ -17,6 +17,7 @@ func (reply *Reply) TableName() string {
 	return "reply"
 }
 
+// User creates a new reply.
 func (this *Reply) CreateReply() (err error) {
 	result := database.DB.Create(&this)
 	if result.Error != nil {

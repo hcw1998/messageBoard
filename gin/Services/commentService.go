@@ -24,21 +24,18 @@ func (this *Comment) CreateComment() (err error) {
 	userModel.IsReply = this.IsReply
 	userModel.UserId = this.UserId
 	err = userModel.CreateComment()
-	// fmt.Printf("after create%v, %s	\n", userModel, err)
 	return err
 }
 
 func (this *Comment) SelectComment() (*[]model.Comment, error) {
 	var commentModel model.Comment
 	comment, err := commentModel.SelectComment()
-	// fmt.Printf("after create%v, %s	\n", userModel, err)
 	return comment, err
 }
 
 func (this *Comment) SelectCommentWithLike(search string) (*[]model.Comment, error) {
 	var commentModel model.Comment
 	comment, err := commentModel.SelectCommentWithLike(search)
-	// fmt.Printf("after create%v, %s	\n", userModel, err)
 	return comment, err
 }
 

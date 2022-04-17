@@ -21,6 +21,5 @@ func (this *Reply) CreateReply() (err error) {
 	replyModel.CommentId = this.CommentId
 	replyModel.UserId = this.UserId
 	err = replyModel.CreateReply()
-	// fmt.Printf("after create%v, %s	\n", userModel, err)
 	return err
 }

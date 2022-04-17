@@ -61,13 +61,13 @@ func ValidateToken(tokenString string) (uint, bool, error) {
 func VerifyToken(c *gin.Context) {
 	token, ok := getToken(c)
 	if !ok {
-		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"code": -1})
+		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "create token failed"})
 		return
 	}
 
 	id, is_superuser, err := ValidateToken(token)
 	if err != nil {
-		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"code": -2})
+		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "invalid token"})
 		return
 	}
 	c.Set("id", id)

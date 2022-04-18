@@ -12,7 +12,7 @@ V 5. 使用者登入後回覆特定留言，但只開放針對留言做回覆，
 
 管理介面 is_superuser = true  
 
-V 1. 管理者可以看到目前的留言並搜尋留言內容 GET /superuser/comment?search=!  
+V 1. 管理者可以看到目前的留言並搜尋留言內容 GET /superuser/comment?search=${string}
 
 V 2. 管理者可以隱藏留言 PUT /superuser/comment  
 
